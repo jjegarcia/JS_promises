@@ -10,6 +10,7 @@
 </div>
 
 <script>
+    //That JSON parsing logic really ought to live in getPostData
     function getPostData() {
         return fetch("https://jsonplaceholder.typicode.com/posts/1").then(response => {
             return response.json();
