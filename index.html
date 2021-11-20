@@ -11,7 +11,9 @@
 
 <script>
     function getPostData() {
-        return fetch("https://jsonplaceholder.typicode.com/posts/1");
+        return fetch("https://jsonplaceholder.typicode.com/posts/1").then(response => {
+            return response.json();
+        })
     }
 
     function renderPost(postData) {
@@ -21,13 +23,10 @@
         return `${postHeadingHTML}${postBodyHTML}`;
     }
 
-    getPostData().then(response => {
-        response.json().then(post => {
-            let rendered = renderPost(post);
-            document.getElementById("main").innerHTML = rendered;
-        })
-    })
-    getPostData();
+    getPostData().then(post => {
+        let rendered = renderPost(post);
+        document.getElementById("main").innerHTML = rendered;
+    });
 </script>
 </body>
 </html>
